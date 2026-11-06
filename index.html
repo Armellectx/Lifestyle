@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lifestyle Notes</title>
+  <meta name="description" content="Prise de notes quotidienne, hors ligne, stockée sur votre appareil.">
+  <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1b1a18" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Notes">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <aside class="sidebar" aria-label="Liste des notes">
+      <header class="sidebar-header">
+        <h1 class="brand">Lifestyle Notes</h1>
+        <button id="install" class="btn btn-ghost btn-small" type="button" hidden>Installer</button>
+      </header>
+
+      <div class="actions">
+        <button id="today-note" class="btn btn-primary" type="button">Note du jour</button>
+        <button id="new-note" class="btn" type="button" title="Nouvelle note (Ctrl+Alt+N)">+ Nouvelle</button>
+      </div>
+
+      <input id="search" class="search" type="search" placeholder="Rechercher…" aria-label="Rechercher dans les notes" autocomplete="off">
+
+      <ul id="note-list" class="note-list"></ul>
+      <p id="list-empty" class="list-empty" hidden></p>
+
+      <footer class="sidebar-footer">
+        <button id="export" class="btn btn-ghost btn-small" type="button">Exporter (JSON)</button>
+        <button id="import" class="btn btn-ghost btn-small" type="button">Importer</button>
+        <input id="import-file" type="file" accept="application/json,.json" hidden>
+      </footer>
+    </aside>
+
+    <main class="main">
+      <div id="editor-placeholder" class="placeholder">
+        <p>Choisissez une note ou commencez celle du jour.</p>
+      </div>
+
+      <section id="editor" class="editor" hidden aria-label="Éditeur de note">
+        <div class="editor-toolbar">
+          <button id="back" class="btn btn-ghost btn-small back" type="button" aria-label="Retour à la liste">← Notes</button>
+          <span id="save-status" class="save-status" role="status" aria-live="polite"></span>
+          <button id="delete-note" class="btn btn-ghost btn-small btn-danger" type="button">Supprimer</button>
+        </div>
+        <input id="note-title" class="note-title" type="text" placeholder="Titre" aria-label="Titre de la note" autocomplete="off">
+        <p id="note-meta" class="note-meta"></p>
+        <textarea id="note-content" class="note-content" placeholder="Écrivez ici…" aria-label="Contenu de la note"></textarea>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
